@@ -1,22 +1,219 @@
-# secrets & env
+############################
+# SECRETS & SENSITIVE DATA
+############################
+
+# dotenv / env files
 .env
+.env.*
+*.env
+
+# key / cert / keystore material
 *.pem
 *.pfx
+*.p12
 *.key
 *.crt
+*.cer
+*.der
+*.jks
+*.kdbx
+*.keystore
+
+# SSH private keys
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+id_ecdsa
+id_ecdsa.*
+
+# generic secrets (keep these local)
+secrets.*
+secret.*
+*.vault
+*.vault.yml
+*.vault.yaml
+*.gpg
+*.asc
+
+# Terraform / Ansible vars that often hold creds
 **/*vars*.tfvars
+*.tfvars
 **/inventory.yml
+ansible-vault-pass.txt
+.vault_pass
+.vault_pass.txt
+
+# local-only secret directories
+.secrets/
+secrets/
 lab/
-# state & noise
+
+
+############################
+# TERRAFORM / IaC STATE
+############################
+
 .terraform/
 terraform.tfstate*
+*.tfstate.backup
+*.tfplan
+
+
+############################
+# LOGS, CAPTURES, EVIDENCE
+############################
+# (raw forensics stay local; I can export curated/redacted samples manually)
+
+# packet captures
 *.pcap
+*.pcapng
+
+# Windows event logs
 *.evtx
+
+# generic log files
 *.log
+*.log.*
+
+# large compressed log dumps
+*.log.gz
+*.tgz
+*.gz
+*.zip
+*.7z
+*.xz
+*.tar
+
+# generic telemetry / traces
+*.csv.gz
+*.tmp
+*.bak
+*.orig
+
+# common log dirs
+logs/
+**/logs/
+capture-loss/
+diagnostics/
+zeek-logs/
+suricata-logs/
+bro-logs/
+
+# if I ever export full Elastic indices
+es-data/
+elastic-data/
+logstash-data/
+
+
+############################
+# VM / HYPERVISOR ARTIFACTS
+############################
+
+# disks & images
 *.vmdk
+*.vdi
+*.vhd
+*.vhdx
 *.iso
-# OS/Editor
+*.img
+*.ova
+*.ovf
+
+# VMware junk
+*.vmwarevm/
+*.vmware/
+*.nvram
+*.lck
+*.vmxf
+*.vmx
+*.vmx~
+*.vmem
+*.vmsn
+*.vswp
+*.vmss
+
+
+############################
+# BUILD / RUNTIME ARTIFACTS
+############################
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+venv/
+.envrc
+.python-version
+
+# Node / frontend
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Java / JVM
+target/
+out/
+.gradle/
+.gradle-cache/
+
+# Go
+bin/
+pkg/
+
+# Rust
+target/
+
+# .NET
+bin/
+obj/
+
+
+############################
+# DOCKER / CONTAINER NOISE
+############################
+
+# local override / secrets
+docker-data/
+docker-volumes/
+.docker/
+.docker-compose.override.yml
+docker-compose.override.yml
+
+
+############################
+# OS / EDITOR / IDE
+############################
+
+# macOS / Windows
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VSCode / JetBrains
 .vscode/
 .idea/
+*.iml
+
+# generic editor backups
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+*.orig
+
+# history / local config
+.history/
+.vagrant/
