@@ -1,0 +1,22 @@
+# secrets & env
+.env
+*.pem
+*.pfx
+*.key
+*.crt
+**/*vars*.tfvars
+**/inventory.yml
+lab/
+# state & noise
+.terraform/
+terraform.tfstate*
+*.pcap
+*.evtx
+*.log
+*.vmdk
+*.iso
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

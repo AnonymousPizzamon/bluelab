@@ -1,0 +1,18 @@
+                    [ Internet ]
+                         |
+                    vmnet8 (NAT)
+                         |
+                 +----------------+
+                 |    pfSense     |  vNIC0: vmnet8 (WAN)
+                 | (1 vCPU, 512M) |  vNIC1: vmnet2 (LAN 10.42.0.1/24)
+                 +----------------+
+                         |
+                    vmnet2 (Host-only, promiscuous ON)
+        -------------------------------------------------------
+        |                     |                          |
+   Windows Server DC     Windows 11 Client          Ubuntu 22.04 SIEM
+   (2 vCPU, 2G)          (2 vCPU, 3G)              (2 vCPU, 5.5G, 2 NICs)
+   10.42.0.10            10.42.0.20                NIC1: 10.42.0.50 (vmnet2)
+                                                   NIC2: mgmt (optional)
+                                                   Elastic+Kibana+Fleet (Docker)
+                                                   Zeek (sniff vmnet2)
